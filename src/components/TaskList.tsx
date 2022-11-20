@@ -19,6 +19,11 @@ export function TaskList() {
   }
 
   function handleCreateNewTask() {
+    if (!newTaskTitle.trim()) {
+      console.error('Title is not defined')
+      return
+    }
+
     const newTask: Task = {
       id: generateRandomId(),
       title: newTaskTitle,
