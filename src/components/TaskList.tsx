@@ -34,16 +34,10 @@ export function TaskList() {
   }
 
   function handleToggleTaskCompletion(id: number) {
-    const selectedTask: Task | undefined = tasks.find(task => task.id === id)
-
-    if (!selectedTask) {
-      console.error(`Error to toggle task state ${id}`)
-      return
-    }
-
-    selectedTask.isComplete = !selectedTask.isComplete
-
-    const updatedTasks = tasks.map(task => task.id === selectedTask.id ? selectedTask : task)
+    const updatedTasks = tasks.map(task => task.id === id ? {
+      ...task,
+      isComplete: !task.isComplete
+    } : task)
     setTasks(updatedTasks)
   }
 
